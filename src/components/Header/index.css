@@ -1,3 +1,11 @@
 .header {
   height: 80px;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #edeaea;
+  justify-content: flex-end;
+}
+.header .avatar-icon {
+  margin-right: 20px;
 }

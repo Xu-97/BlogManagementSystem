@@ -13,27 +13,27 @@ import User from '../User';
 const { Footer, Sider, Content } = Layout;
 
 export default class Admin extends Component {
-  render() {
-    return (
-      <Layout style={{ height: '100%' }}>
-        <Sider>
-          <LeftNav />
-        </Sider>
-        <Layout>
-          <Header>Header</Header>
-          <Content style={{ backgroundColor: '#ffffff' }}>
-            <Switch>
-              <Route path="/home" component={Home}></Route>
-              <Route path="/category" component={Category}></Route>
-              <Route path="/article" component={Article}></Route>
-              <Route path="/operat" component={Operat}></Route>
-              <Route path="/user" component={User}></Route>
-              <Redirect to="/home" />
-            </Switch>
-          </Content>
-          <Footer style={{ textAlign: 'center', color: '#ccc' }}>值得信赖的小徐</Footer>
-        </Layout>
-      </Layout>
-    );
-  }
+	render() {
+		return (
+			<Layout style={{ height: '100%' }}>
+				<Sider style={{ backgroundColor: '#ffffff' }}>
+					<LeftNav />
+				</Sider>
+				<Layout>
+					<Header>Header</Header>
+					<Content style={{ backgroundColor: '#ccc' }}>
+						<Switch>
+							<Route path="/home" component={Home}></Route>
+							<Route path="/category" component={Category}></Route>
+							<Route path="/article" component={Article}></Route>
+							<Route path="/operat" component={Operat}></Route>
+							<Route path="/user" component={User}></Route>
+							<Redirect to="/home" />
+						</Switch>
+					</Content>
+					<Footer style={{ textAlign: 'center', color: '#ccc' }}>值得信赖的小徐</Footer>
+				</Layout>
+			</Layout>
+		);
+	}
 }

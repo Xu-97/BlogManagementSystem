@@ -9,14 +9,15 @@ import { getLogin } from '../../api/login';
 export default class Login extends Component {
 	onFinish = async values => {
 		const res = await getLogin(values);
-		if (res.status === 200) {
-			this.props.history.push('/home');
+		if (res.data.code === 200) {
+			this.props.history.replace('/home');
 			message.success('登录成功');
 			console.log(res);
 		} else {
-			//console.log(res);
-			this.props.history.push('/login');
-			message.error(res.msg);
+			console.log(res);
+			this.props.history.replace('/login');
+
+			message.error(res.data.results);
 			// console.log(res);
 		}
 	};
