@@ -5,20 +5,23 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 // 网络请求
 import { getLogin } from '../../api/login';
-
+//将用户信息放到本地存储
+import memoryUtils from '../../utils/memoryUtils';
+import opreactStroage from '../../utils/opreactStroage';
 export default class Login extends Component {
 	onFinish = async values => {
 		const res = await getLogin(values);
 		if (res.data.code === 200) {
-			this.props.history.replace('/home');
+			const user = res.data.results.user;
+			memoryUtils.user = user;
+			opreactStroage.saveUser(user); //存入
 			message.success('登录成功');
-			console.log(res);
+			this.props.history.replace('/home');
 		} else {
 			console.log(res);
 			this.props.history.replace('/login');
 
 			message.error(res.data.results);
-			// console.log(res);
 		}
 	};
 	render() {

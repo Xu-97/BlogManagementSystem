@@ -3,6 +3,8 @@ import { Layout } from 'antd';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../../components/Header';
 import LeftNav from '../../components/LeftNav';
+// 将存储得信息放到这个页面
+import memoryUtils from '../../utils/memoryUtils';
 //引入布局文件
 //引入需要的路由文件
 import Home from '../Home';
@@ -14,13 +16,17 @@ const { Footer, Sider, Content } = Layout;
 
 export default class Admin extends Component {
 	render() {
+		const user = memoryUtils.user;
+		if (user && user.userId) {
+			return <Redirect to="/home" />;
+		}
 		return (
 			<Layout style={{ height: '100%' }}>
 				<Sider style={{ backgroundColor: '#ffffff' }}>
 					<LeftNav />
 				</Sider>
 				<Layout>
-					<Header>Header</Header>
+					<Header></Header>
 					<Content style={{ backgroundColor: '#ccc' }}>
 						<Switch>
 							<Route path="/home" component={Home}></Route>

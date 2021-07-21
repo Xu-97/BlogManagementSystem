@@ -10,7 +10,8 @@ class App extends Component {
 			<HashRouter>
 				<Switch>
 					<Route path="/login" component={Login}></Route>
-					<Route path component={Admin}></Route>
+
+					<Route path="/" component={Admin}></Route>
 					<Redirect to="/login" />
 				</Switch>
 			</HashRouter>
